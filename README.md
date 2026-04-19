@@ -105,17 +105,17 @@ O bien:
 
 ### Opción 3: Local (Jupyter Notebook)
 
-1. Instala dependencias:
-```bash
-pip install pandas numpy matplotlib seaborn
+###  1. Instala dependencias:
 
-2. Ejecuta:
+### pip install pandas numpy matplotlib seaborn
+
+### 2. Ejecuta:
 jupyter notebook
 3. Abre el archivo .ipynb
 
 ### 🔁 Guía de Reproducción
 
-Para reproducir el análisis:
+### Para reproducir el análisis:
 
 Asegúrate de tener los datasets en la ruta:
 /datasets/
