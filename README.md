@@ -113,7 +113,7 @@ pip install pandas numpy matplotlib seaborn
 jupyter notebook
 3. Abre el archivo .ipynb
 
-🔁 Guía de Reproducción
+### 🔁 Guía de Reproducción
 
 Para reproducir el análisis:
 
@@ -128,7 +128,7 @@ Visualización
 No ejecutes celdas fuera de orden (dependencias entre pasos)
 💡 Conclusión General
 
-El análisis revela que:
+### El análisis revela que:
 
 El consumo está concentrado en un grupo reducido de usuarios (heavy users)
 Existen diferencias claras en comportamiento según nivel de uso
@@ -139,7 +139,7 @@ Implementar estrategias de upselling
 Monitorear usuarios intensivos como segmento clave
 Activar usuarios de bajo uso para reducir churn
 
-👨‍💻 Autor
+### 👨‍💻 Autor
 
 Proyecto desarrollado como parte de formación en Data Analytics, aplicando principios de:
 
