@@ -94,7 +94,7 @@ El proyecto sigue un flujo estructurado de análisis:
 
 1. Ve a https://colab.research.google.com
 2. Selecciona **"GitHub"**
-3. Pega la URL de tu repositorio
+3. Pega la URL de repositorio
 4. Abre el notebook
 
 O bien:
@@ -146,4 +146,4 @@ Proyecto desarrollado como parte de formación en Data Analytics, aplicando prin
 Análisis exploratorio (EDA)
 Limpieza de datos
 Segmentación
-Pensamiento analítico orientado a negocio
+
