@@ -1,170 +1,149 @@
-# telecom-analysis
-
-# 📊 ConnectaTel – Análisis de Uso de Clientes
+# telecom-analysis# 📊 ConnectaTel - Análisis de Comportamiento de Clientes
 
 ## 🎯 Objetivo del Proyecto
 
-El objetivo de este proyecto es analizar el comportamiento de los clientes de ConnectaTel (empresa de telecomunicaciones en Latinoamérica) para identificar patrones de uso en llamadas y mensajes, detectar valores atípicos (outliers) y segmentar a los usuarios según su nivel de consumo.
+El objetivo de este proyecto es analizar el comportamiento de los clientes de ConnectaTel en Latinoamérica, utilizando datos de uso de servicios móviles (llamadas y mensajes), información demográfica y planes contratados.
 
-Este análisis permite generar **insights accionables** para optimizar la oferta comercial, mejorar la experiencia del cliente y apoyar la toma de decisiones estratégicas.
+Se busca:
+- Identificar patrones de uso
+- Detectar comportamientos atípicos (outliers)
+- Segmentar clientes según su nivel de uso y edad
+- Generar insights accionables para mejorar la oferta comercial
 
 ---
 
 ## 📂 Datasets Utilizados
 
-Se trabajó con tres fuentes principales:
+El análisis se basa en tres fuentes de datos:
 
-* **plans.csv**
-  Contiene información de los planes disponibles:
+### 1. `plans.csv`
+Contiene información sobre los planes disponibles:
+- Precio
+- Minutos incluidos
+- GB incluidos
+- Costos adicionales
 
-  * precio
-  * minutos incluidos
-  * datos incluidos
-  * costos adicionales
+### 2. `users_latam.csv`
+Información de los usuarios:
+- Edad (`age`)
+- Ciudad (`city`)
+- Fecha de registro (`reg_date`)
+- Plan contratado (`plan`)
+- Estado de churn
 
-* **users_latam.csv**
-  Información de los clientes:
-
-  * edad
-  * ciudad
-  * fecha de registro
-  * tipo de plan
-
-* **usage.csv**
-  Registro de uso del servicio:
-
-  * tipo de evento (llamada o mensaje)
-  * duración de llamadas
-  * longitud de mensajes
-  * fecha de actividad
+### 3. `usage.csv`
+Registro del uso real:
+- Tipo de evento (`type`: call / text)
+- Duración de llamadas (`duration`)
+- Longitud de mensajes (`length`)
+- Fecha (`date`)
+- Usuario (`user_id`)
 
 ---
 
 ## 🔄 Etapas del Análisis
 
-El proyecto se desarrolló siguiendo un flujo estructurado:
+El proyecto sigue un flujo estructurado de análisis:
 
-### 1. Exploración de datos
+### 1. Carga y Exploración
+- Revisión de estructura (`.head()`, `.info()`, `.shape()`)
 
-* Revisión de estructura (`.head()`, `.info()`, `.shape`)
-* Identificación de tipos de datos y granularidad
+### 2. Validación de Calidad de Datos
+- Detección de nulos
+- Identificación de sentinels (-999, "?", etc.)
+- Validación de fechas
 
-### 2. Calidad de datos
+### 3. Limpieza de Datos
+- Imputación de valores inválidos
+- Estandarización de categorías
+- Corrección de fechas fuera de rango
 
-* Detección de valores nulos
-* Identificación de sentinels (ej. `-999`, `"?"`)
-* Validación de fechas fuera de rango
+### 4. Agregación de Datos
+- Transformación de datos de uso a nivel usuario
+- Creación de métricas:
+  - Cantidad de llamadas
+  - Cantidad de mensajes
+  - Minutos totales
 
-### 3. Limpieza de datos
+### 5. Análisis Exploratorio (EDA)
+- Estadísticas descriptivas
+- Histogramas
+- Boxplots (detección de outliers)
 
-* Reemplazo de sentinels
-* Conversión de tipos de datos (fechas)
-* Tratamiento de valores inválidos
-* Manejo de datos no aplicables (MAR)
+### 6. Segmentación de Clientes
+- Por nivel de uso (bajo, medio, alto)
+- Por edad (joven, adulto, adulto mayor)
 
-### 4. Transformación y agregación
-
-* Creación de métricas por usuario:
-
-  * número de llamadas
-  * número de mensajes
-  * minutos totales
-* Integración de datasets (`merge`)
-
-### 5. Análisis exploratorio (EDA)
-
-* Estadísticas descriptivas
-* Visualización de distribuciones
-* Comparación por tipo de plan
-
-### 6. Detección de outliers
-
-* Uso de boxplots
-* Método IQR
-* Interpretación de heavy users
-
-### 7. Segmentación de clientes
-
-* Por nivel de uso (bajo, medio, alto)
-* Por edad (joven, adulto, adulto mayor)
-
-### 8. Insights de negocio
-
-* Identificación de segmentos clave
-* Detección de patrones de consumo
-* Recomendaciones estratégicas
+### 7. Insights de Negocio
+- Identificación de heavy users
+- Evaluación de segmentos
+- Recomendaciones estratégicas
 
 ---
 
-## ▶️ Cómo ejecutar el proyecto
+## ▶️ Cómo Ejecutar el Notebook
 
-### Opción 1: GitHub (visualización rápida)
-
+### Opción 1: GitHub (visualización)
 1. Abre el repositorio en GitHub
 2. Haz clic en el archivo `.ipynb`
-3. GitHub mostrará el notebook renderizado
+3. Visualiza directamente el análisis
 
 ---
 
-### Opción 2: Ejecución local
+### Opción 2: Google Colab (recomendado para ejecución)
 
-1. Clona el repositorio:
+1. Ve a https://colab.research.google.com
+2. Selecciona **"GitHub"**
+3. Pega la URL de tu repositorio
+4. Abre el notebook
 
+O bien:
+- Descarga el `.ipynb`
+- Súbelo manualmente a Colab
+
+---
+
+### Opción 3: Local (Jupyter Notebook)
+
+1. Instala dependencias:
 ```bash
-git clone <URL_DEL_REPOSITORIO>
-```
+pip install pandas numpy matplotlib seaborn
 
-2. Instala dependencias:
-
-```bash
-pip install pandas numpy matplotlib seaborn jupyter
-```
-
-3. Ejecuta Jupyter Notebook:
-
-```bash
+2. Ejecuta:
 jupyter notebook
-```
+3. Abre el archivo .ipynb
 
-4. Abre el archivo `.ipynb` y ejecuta las celdas
-
----
-
-## 🔁 Guía de reproducción
+🔁 Guía de Reproducción
 
 Para reproducir el análisis:
 
-1. Asegúrate de tener los datasets en la carpeta `/datasets`
-2. Ejecuta el notebook en orden (de arriba hacia abajo)
-3. Verifica:
+Asegúrate de tener los datasets en la ruta:
+/datasets/
+Ejecuta el notebook en orden:
+Carga de datos
+Limpieza
+Agregación
+Análisis
+Visualización
+No ejecutes celdas fuera de orden (dependencias entre pasos)
+💡 Conclusión General
 
-   * limpieza de datos
-   * creación de variables
-   * agregación por usuario
-4. Ejecuta secciones de visualización y segmentación
-5. Revisa el bloque final de **insights ejecutivos**
+El análisis revela que:
 
----
+El consumo está concentrado en un grupo reducido de usuarios (heavy users)
+Existen diferencias claras en comportamiento según nivel de uso
+Los planes actuales pueden optimizarse mediante segmentación
+🚀 Recomendaciones
+Diseñar planes diferenciados por nivel de uso
+Implementar estrategias de upselling
+Monitorear usuarios intensivos como segmento clave
+Activar usuarios de bajo uso para reducir churn
 
-## 💡 Insights Clave
+👨‍💻 Autor
 
-* El uso está **altamente concentrado** en un pequeño grupo de usuarios (heavy users)
-* Existen segmentos claramente diferenciados por nivel de consumo
-* Los planes actuales pueden no estar alineados con el comportamiento real
+Proyecto desarrollado como parte de formación en Data Analytics, aplicando principios de:
 
----
-
-## 🚀 Recomendaciones
-
-* Diseñar planes diferenciados por nivel de uso
-* Implementar estrategias de upselling
-* Identificar y retener usuarios de alto valor
-* Activar usuarios de bajo consumo
-
----
-
-## 👤 Autor
-
-Proyecto desarrollado como parte de un ejercicio de análisis de datos enfocado en **Data Analytics con Python y enfoque de negocio (Lean mindset)**.
-
----
+Análisis exploratorio (EDA)
+Limpieza de datos
+Segmentación
+Pensamiento analítico orientado a negocio
